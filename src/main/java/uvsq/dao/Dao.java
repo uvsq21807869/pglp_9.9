@@ -3,7 +3,7 @@ package uvsq.dao;
 import java.sql.Connection;
 import java.sql.Statement;
 
-import connection.DBConnection;
+import uvsq.connection.DBConnection;
 
 
 public abstract class Dao<T> {
