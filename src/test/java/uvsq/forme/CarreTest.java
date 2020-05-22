@@ -16,7 +16,7 @@ public class CarreTest {
 		assertEquals(15, car1.getPointDOrigine().getX());
 		assertEquals(15, car1.getPointDOrigine().getY());
 	}
-	
+
 	@Test
 	public void testDeplacerDirection() {
 		Carre car1 = new Carre("carre", new Point(11, 20), 5);

@@ -10,8 +10,6 @@ import uvsq.bean.Rectangle;
 
 public class RectangleTest {
 
-
-
 	@Test
 	public void testMove() {
 
@@ -19,10 +17,10 @@ public class RectangleTest {
 		r1.move(7, 5);
 		assertEquals(r1.getPointDOrigine().getPosition(), "(7, 5)");
 	}
-	
+
 	@Test
 	public void testDeplacerDirection() {
-		Rectangle car1 = new Rectangle("rectangle", new Point(11, 20), 5,6);
+		Rectangle car1 = new Rectangle("rectangle", new Point(11, 20), 5, 6);
 		car1.deplacerDirection(1, 1);
 		assertEquals(12, car1.getPointDOrigine().getX());
 		assertEquals(21, car1.getPointDOrigine().getY());

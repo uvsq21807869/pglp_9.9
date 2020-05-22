@@ -128,7 +128,7 @@ public class DessinDao extends Dao<Dessin> {
 				}
 			}
 		} catch (SQLException e) {
-			System.out.println("Ce nom de dessin est deja  utilise ou invalide\n");
+			System.out.println("Ce nom de dessin est deja utilise ou invalide\n");
 			e.printStackTrace();
 		}
 

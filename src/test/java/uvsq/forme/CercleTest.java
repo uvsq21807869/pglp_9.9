@@ -17,7 +17,7 @@ public class CercleTest {
 		assertEquals(3, c1.getCentre().getX());
 		assertEquals(0, c1.getCentre().getY());
 	}
-	
+
 	@Test
 	public void testDeplacerDirection() {
 		Cercle car1 = new Cercle("cercle", new Point(11, 20), 5);

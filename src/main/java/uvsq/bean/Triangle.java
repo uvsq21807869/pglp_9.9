@@ -14,6 +14,7 @@ public class Triangle extends Forme {
 	 * @param b   PointB
 	 * @param c   PointC
 	 */
+
 	public Triangle(String nom, Point pointA, Point pointB, Point pointC) {
 		super(nom);
 		this.pointA = pointA;
@@ -38,9 +39,9 @@ public class Triangle extends Forme {
 		int tmpY = this.getPointA().getY();
 		this.getPointA().move(x, y);
 		this.getPointB().move(this.getPointB().getX() + (this.getPointA().getX() - tmpX),
-		this.getPointB().getY() + (this.getPointA().getX() - tmpY));
+				this.getPointB().getY() + (this.getPointA().getX() - tmpY));
 		this.getPointC().move(this.getPointC().getX() + (this.getPointA().getX() - tmpX),
-		this.getPointC().getY() + (this.getPointA().getX() - tmpY));
+				this.getPointC().getY() + (this.getPointA().getX() - tmpY));
 	}
 
 	public Point getPointC() {

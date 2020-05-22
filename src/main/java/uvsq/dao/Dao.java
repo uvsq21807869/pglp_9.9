@@ -5,24 +5,22 @@ import java.sql.Statement;
 
 import uvsq.connection.DBConnection;
 
-
 public abstract class Dao<T> {
 
-  protected Connection connect = null;
+	protected Connection connect = null;
 
-  public Statement stmt = null;
+	public Statement stmt = null;
 
-  public abstract boolean create(T obj);
+	public abstract boolean create(T obj);
 
-  public abstract T find(String id);
+	public abstract T find(String id);
 
-  public abstract boolean delete(String id);
+	public abstract boolean delete(String id);
 
-  public static String nom = "default";
+	public static String nom = "default";
 
-  public void connect() {
-	  this.connect=DBConnection.getInstance();
-  }
-
+	public void connect() {
+		this.connect = DBConnection.getInstance();
+	}
 
 }

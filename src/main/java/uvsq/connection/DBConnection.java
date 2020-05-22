@@ -12,7 +12,7 @@ public class DBConnection {
 	// Objet Connection
 	private static Connection connection;
 
-	// Constructeur privé
+	// Constructeur privï¿½
 	private DBConnection() {
 		try {
 			Class.forName(JDBC_DRIVER);
@@ -24,11 +24,19 @@ public class DBConnection {
 		}
 	}
 
-	// Méthode qui va nous retourner notre instance et la créer si elle n'existe pas
+	// Mï¿½thode qui va nous retourner notre instance et la crï¿½er si elle n'existe pas
 	public static Connection getInstance() {
 		if (connection == null) {
 			new DBConnection();
 		}
 		return connection;
+	}
+
+	public static void close() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
