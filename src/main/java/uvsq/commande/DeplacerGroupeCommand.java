@@ -9,7 +9,7 @@ public class DeplacerGroupeCommand implements Command {
 	private int ordonne;
 
 	/**
-	 * Commande pour déplacer un groupe.
+	 * Commande qui gere le deplacement d'un group de forme a une position donnee.
 	 *
 	 * @param groupe Groupe à déplacer
 	 * @param x      Distance verticale

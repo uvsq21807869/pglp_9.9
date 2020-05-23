@@ -3,23 +3,23 @@ package uvsq.commande;
 import java.util.List;
 import uvsq.bean.*;
 
-public class SupprimerElementCommand implements Command {
+public class SupprimerGraphicCommand implements Command {
 
 	private String asupprimer;
 	private Dessin dessin;
 
 	/**
-	 * Supprime un élément du dessin.
+	 * Supprime un graphic du dessin.
 	 *
 	 * @param dessin     Dessin en cours
-	 * @param asupprimer Nom de l'élément à supprimer
+	 * @param asupprimer Nom du graphic à supprimer
 	 */
-	public SupprimerElementCommand(Dessin dessin, String asupprimer) {
+	public SupprimerGraphicCommand(Dessin dessin, String asupprimer) {
 		this.dessin = dessin;
 		this.asupprimer = asupprimer;
 	}
 
-	/** Supprime l'élément. */
+	/** Supprime graphic. */
 	@Override
 	public void execute() {
 		List<Graphic> liste = this.dessin.getListe();

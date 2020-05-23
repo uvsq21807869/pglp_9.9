@@ -13,17 +13,17 @@ public class CreationTriangleCommand extends CreationFormeCommand {
 	 * Commande de création de triangle.
 	 *
 	 * @param nom    Nom du triangle
-	 * @param a      Position du point a
-	 * @param b      Position du point b
-	 * @param c      Position du point c
+	 * @param pointa      Position du point a
+	 * @param pointb      Position du point b
+	 * @param pointc      Position du point c
 	 * @param dessin Dessin à envoyer
 	 */
-	public CreationTriangleCommand(String nom, Point a, Point b, Point c, Dessin dessin) {
+	public CreationTriangleCommand(String nom, Point pointa, Point pointb, Point pointc, Dessin dessin) {
 		super(dessin);
 		this.nom = nom;
-		this.pointa = a;
-		this.pointb = b;
-		this.pointc = c;
+		this.pointa = pointa;
+		this.pointb = pointb;
+		this.pointc = pointc;
 	}
 
 	/** Ajoute le triangle au dessin. */

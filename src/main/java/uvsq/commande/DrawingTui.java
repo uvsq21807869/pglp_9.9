@@ -86,7 +86,7 @@ public class DrawingTui {
 
 				nomForme = in.substring(in.indexOf("(") + 1, in.indexOf(")"));
 				verifieChaine(nomForme);
-				command = new SupprimerElementCommand(dessin, nomForme);
+				command = new SupprimerGraphicCommand(dessin, nomForme);
 
 			} else if (chaineDeCommande.matches("save")) {
 				String nom = in.substring(in.indexOf("(") + 1, in.indexOf(")"));

@@ -8,7 +8,7 @@ public class SaveCommand implements Command {
 	private Dessin dessin;
 
 	/**
-	 * Commande qui sauvegarde le dessin.
+	 * Commande consiste a enregistrer le dessin courant dans la bd.
 	 *
 	 * @param dessin Dessin
 	 */
@@ -16,7 +16,7 @@ public class SaveCommand implements Command {
 		this.dessin = dessin;
 	}
 
-	/** Crée le dessin souhaité. */
+	/** ajouter le dessin dans la base de donnee */ 
 	public void execute() {
 		DaoFactory.getDessinDao().create(this.dessin);
 	}

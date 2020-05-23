@@ -9,7 +9,7 @@ public class DeplacerCommand implements Command {
 	private int ordonne;
 
 	/**
-	 * Commande qui déplace une forme à la position souhaité.
+	 * Commande qui gere le deplacement d'une forme a une position donnee.
 	 *
 	 * @param forme Forme à déplacer
 	 * @param x     abscicsse

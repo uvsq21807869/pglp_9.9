@@ -8,7 +8,7 @@ public class LoadCommand implements Command {
 	private DrawingTui draw;
 
 	/**
-	 * Commande qui charge le dessin du jdbc.
+	 * Commande consiste a charger le dessin a partir de notre bd
 	 *
 	 * @param nom  Nom du dessin
 	 * @param draw Interface utilisateur
@@ -18,7 +18,7 @@ public class LoadCommand implements Command {
 		this.draw = draw;
 	}
 
-	/** Cherche est attache le dessin. */
+	/**la recherche et la recupération du dessin . */
 	@Override
 	public void execute() {
 		this.draw.setDessin(DaoFactory.getDessinDao().find(this.nom));

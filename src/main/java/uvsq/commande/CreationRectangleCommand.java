@@ -13,14 +13,14 @@ public class CreationRectangleCommand extends CreationFormeCommand {
 	 * Commande de création de rectangle.
 	 *
 	 * @param nom      Nom du rectangle
-	 * @param p        Point en bas à gauche
+	 * @param point        Point en bas à gauche
 	 * @param longueur Longueur
 	 * @param hauteur  Hauteur
 	 * @param dessin   Dessin en cours
 	 */
-	public CreationRectangleCommand(String nom, Point p, int longueur, int hauteur, Dessin dessin) {
+	public CreationRectangleCommand(String nom, Point point, int longueur, int hauteur, Dessin dessin) {
 		super(dessin);
-		this.point = p;
+		this.point = point;
 		this.longueur = longueur;
 		this.hauteur = hauteur;
 		this.nom = nom;

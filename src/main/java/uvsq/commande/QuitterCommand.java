@@ -9,7 +9,7 @@ public class QuitterCommand implements Command {
 	public QuitterCommand() {
 	}
 
-	/** Ferme le programme. */
+	/** la fermeture de la bd et l'arret de l'application */
 	@Override
 	public void execute() {
 		DBConnection.close();
