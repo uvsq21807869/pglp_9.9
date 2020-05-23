@@ -29,7 +29,7 @@ public class CreationGroupeCommand extends CreationFormeCommand {
 
 		for (int i = 0; i < groupElement.length; i++) {
 			if (!this.dessin.exists(groupElement[i])) {
-				System.out.println("le nom du group existe déja ,veuillez choisir un autre nom !");
+				System.out.println("le nom du group existe déja ou bien l'element n'existe pas auparavant pour creer le groupe !");
 				return;
 			}
 		}

@@ -21,6 +21,7 @@ public class LoadCommand implements Command {
 	/**la recherche et la recupération du dessin . */
 	@Override
 	public void execute() {
+		
 		this.draw.setDessin(DaoFactory.getDessinDao().find(this.nom));
 	}
 }

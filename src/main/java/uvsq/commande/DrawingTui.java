@@ -13,30 +13,13 @@ public class DrawingTui {
 	private Dessin dessin;
 
 	/**
-	 * Classe chargé de l'interface textuelle utilisateur.
+	 * Classe chargé de l'interface des interaction utilisateur.
 	 */
 	public DrawingTui() {
 
 		this.scanner = new Scanner(System.in, "UTF-8");
-		this.dessin = new Dessin("DessinTest");
+		this.dessin = new Dessin("Dessin");
 		DaoFactory.getDessinDao();
-	}
-
-	/**
-	 * Vérifie si une chaine contient des caractères spéciaux.
-	 *
-	 * @param chaine Chaine à vérifier
-	 * @throws InvalidParameterException Si un argument est invalide
-	 */
-	public void verifieChaine(String chaine) throws InvalidParameterException {
-
-		Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
-		Matcher m = p.matcher(chaine);
-		boolean b = m.find();
-
-		if (b) {
-			throw new InvalidParameterException();
-		}
 	}
 
 	/**
@@ -51,21 +34,22 @@ public class DrawingTui {
 		Command command = null;
 		String nomForme = null;
 		try {
+			// matches one or many whitespaces and replace it with ""
 			in = in.replaceAll("\\s+", "");
 			String chaineDeCommande = in.substring(0, in.indexOf("("));
 			if (chaineDeCommande.matches("move")) {
 				nomForme = in.substring(in.indexOf("(") + 1, in.indexOf(","));
-				int x = Integer.parseInt(in.substring(in.lastIndexOf("(") + 1, in.lastIndexOf(",")));
-				int y = Integer.parseInt(in.substring(in.lastIndexOf(",") + 1, in.indexOf(")")));
+
 				for (Graphic elem : dessin.getListe()) {
 					if (elem.getNom().contentEquals(nomForme)) {
+						int x = Integer.parseInt(in.substring(in.lastIndexOf("(") + 1, in.lastIndexOf(",")));
+						int y = Integer.parseInt(in.substring(in.lastIndexOf(",") + 1, in.indexOf(")")));
 						command = new DeplacerCommand((Forme) elem, x, y);
 						break;
 					}
 				}
 
 			} else if (chaineDeCommande.matches("group")) {
-
 				String nomGroupe = in.substring(in.indexOf("(") + 1, in.indexOf(","));
 				verifieChaine(nomGroupe);
 				String[] tableDeNom = in.substring(in.lastIndexOf("(") + 1, in.indexOf(")")).split(",");
@@ -107,7 +91,7 @@ public class DrawingTui {
 
 			} else if (chaineDeCommande.matches("quit")) {
 				command = new QuitterCommand();
-			} else if (in.contains("=") /* creation[1].matches("=") */) {
+			} else if (in.contains("=")) {
 				String[] creation = in.split("=");
 				nomForme = in.substring(0, in.indexOf("="));
 				verifieChaine(nomForme);
@@ -147,12 +131,27 @@ public class DrawingTui {
 				}
 			}
 		} catch (StringIndexOutOfBoundsException | InvalidParameterException ie) {
-			System.out.println("Veuillez entrer des informations valides.\n "
-					+ "Un argument ne peut contenir de caractères spéciaux");
+			System.out.println("Veuillez verifier la syntaxe.\n "
+					+"votre argument contient des caracetre speciaux ");
+		}catch(ClassCastException e) {
+			System.out.println("les arguments ne sont pas corrects ");
+		}catch(NumberFormatException e) {
+			System.out.println("l'argument doit etre forcement un entier");
 		}
 		return command;
 	}
 
+
+
+	/**
+	 * Définie le dessin sur lequel on travail.
+	 *
+	 * @param dessin Dessin à définir
+	 */
+	public void setDessin(Dessin dessin) {
+		this.dessin = dessin;
+	}
+	
 	/** Affiche le dessin complet. */
 	public void afficherDessin() {
 
@@ -162,11 +161,19 @@ public class DrawingTui {
 	}
 
 	/**
-	 * Définie le dessin sur lequel on travail.
+	 * Vérifie si une chaine contient des caractères spéciaux.
 	 *
-	 * @param dessin Dessin à définir
+	 * @param chaine Chaine à vérifier
+	 * @throws InvalidParameterException Si un argument est invalide
 	 */
-	public void setDessin(Dessin dessin) {
-		this.dessin = dessin;
+	public void verifieChaine(String chaine) throws InvalidParameterException {
+
+		Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(chaine);
+		boolean b = m.find();
+
+		if (b) {
+			throw new InvalidParameterException();
+		}
 	}
 }

@@ -65,7 +65,7 @@ public class DessinDao extends Dao<Dessin> {
 			}
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("le nom du dessin existe deja,veuillez choisir un autre nom !!");
 			return false;
 		}
 
@@ -100,30 +100,41 @@ public class DessinDao extends Dao<Dessin> {
 					ResultSet resGroupe = selectGroupe.executeQuery();) {
 
 				dessin = new Dessin(id);
+				int count=0;
 				while (resCarre.next()) {
 					dao = new CarreDao();
 					dessin.addGraphic((Carre) dao.find(resCarre.getString("nom")));
+					count++;
 				}
 
 				while (resRectangle.next()) {
 					dao = new RectangleDao();
 					dessin.addGraphic((Rectangle) dao.find(resRectangle.getString("nom")));
+					count++;
 				}
 
 				while (resTriangle.next()) {
 					dao = new TriangleDao();
 					dessin.addGraphic((Triangle) dao.find(resTriangle.getString("nom")));
+					count++;
 				}
 
 				while (resCercle.next()) {
 					dao = new CercleDao();
 					dessin.addGraphic((Cercle) dao.find(resCercle.getString("nom")));
+					count++;
 				}
 
 				while (resGroupe.next()) {
 					dao = new GroupeDao();
 					dessin.addGraphic((Groupe) dao.find(resGroupe.getString("nom")));
+					count++;
+				}		
+				if(count==0) {
+					System.out.println("le dessin est vide");
+
 				}
+
 			}
 		} catch (SQLException e) {
 			System.out.println("Ce nom de dessin est deja utilise ou invalide\n");
