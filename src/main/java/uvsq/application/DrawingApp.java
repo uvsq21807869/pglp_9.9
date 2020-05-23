@@ -11,7 +11,7 @@ public class DrawingApp {
 
 	/**
 	 * Application qui lance le système de dessin et crée la base de données si
-	 * besoin.
+	 * necessaire .
 	 */
 	public DrawingApp() {
 		Database database = new Database();
@@ -28,9 +28,7 @@ public class DrawingApp {
 			command = this.draw.nextCommand();
 			try {
 				command.execute();
-			} catch (NullPointerException e) {
-				System.out.println("Que souhaitez-vous ?");
-			}
+			} catch (NullPointerException e) {}
 			this.draw.afficherDessin();
 		}
 	}

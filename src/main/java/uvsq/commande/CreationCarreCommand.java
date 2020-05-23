@@ -12,19 +12,19 @@ public class CreationCarreCommand extends CreationFormeCommand {
 	 * Commande de création de carrée.
 	 *
 	 * @param nom    Nom du carrée
-	 * @param c      Point en bas à droite
+	 * @param point      Point en bas à droite
 	 * @param cote   Longueur d'u côté
 	 * @param dessin Dessin principal
 	 */
-	public CreationCarreCommand(String nom, Point c, int cote, Dessin dessin) {
+	public CreationCarreCommand(String nom, Point point, int cote, Dessin dessin) {
 
 		super(dessin);
 		this.nom = nom;
-		this.cpoint = c;
+		this.cpoint = point;
 		this.cote = cote;
 	}
 
-	/** Ajoute le carré au dessin. */
+	/** Ajout de carré au dessin. */
 	@Override
 	public void execute() {
 		if (!this.exist(this.nom)) {

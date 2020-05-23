@@ -8,9 +8,9 @@ public class Carre extends Forme {
 	/**
 	 * Forme du carré.
 	 * 
-	 * @param nom  Nom du carré
-	 * @param p    Point d'origine
-	 * @param cote Longueur du côté
+	 * @param nom 				Nom du carré
+	 * @param pointDOrigine     Point d'origine
+	 * @param cote 				Longueur du côté
 	 */
 	public Carre(String nom, Point pointDOrigine, int cote) {
 		super(nom);

@@ -8,9 +8,10 @@ import uvsq.bean.*;
 import uvsq.dao.*;
 
 public class CercleDao extends Dao<Cercle> {
+	
 	@Override
 	public boolean create(Cercle obj) {
-		this.connect();
+		//this.connect();
 		try (PreparedStatement insert = this.connect
 				.prepareStatement("INSERT INTO Cercle(nom, x, y, rayon) values(?, ?, ?, ?)");) {
 			insert.setString(1, Dao.nom + ":" + obj.getNom());
@@ -28,7 +29,7 @@ public class CercleDao extends Dao<Cercle> {
 	@Override
 	public Cercle find(String id) {
 		Cercle c = null;
-		this.connect();
+	//	this.connect();
 		try (PreparedStatement select = this.connect.prepareStatement("SELECT * FROM Cercle C WHERE C.nom = ?")) {
 			select.setString(1, id);
 			try (ResultSet res = select.executeQuery()) {
@@ -47,7 +48,7 @@ public class CercleDao extends Dao<Cercle> {
 
 	@Override
 	public boolean delete(String id) {
-		this.connect();
+	//	this.connect();
 		try (PreparedStatement delete = this.connect.prepareStatement("DELETE FROM Cercle C WHERE C.nom = ?");) {
 			delete.setString(1, id);
 			delete.executeUpdate();

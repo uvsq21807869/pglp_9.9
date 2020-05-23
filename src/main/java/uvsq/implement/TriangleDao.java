@@ -11,7 +11,6 @@ public class TriangleDao extends Dao<Triangle> {
 
 	@Override
 	public boolean create(Triangle obj) {
-		this.connect();
 		try (PreparedStatement insert = this.connect
 				.prepareStatement("INSERT INTO Triangle(nom, ax, ay, bx, by, cx, cy) values(?, ?, ?, ?, ?, ?, ?)");) {
 			insert.setString(1, Dao.nom + ":" + obj.getNom());
@@ -32,7 +31,6 @@ public class TriangleDao extends Dao<Triangle> {
 	@Override
 	public Triangle find(String id) {
 		Triangle t = null;
-		this.connect();
 		try (PreparedStatement select = this.connect.prepareStatement("SELECT * FROM Triangle T WHERE T.nom = ?")) {
 			select.setString(1, id);
 			try (ResultSet res = select.executeQuery()) {
@@ -51,7 +49,6 @@ public class TriangleDao extends Dao<Triangle> {
 
 	@Override
 	public boolean delete(String id) {
-		this.connect();
 		try (PreparedStatement delete = this.connect.prepareStatement("DELETE FROM Triangle T WHERE T.nom = ?");) {
 			delete.setString(1, id);
 			delete.executeUpdate();

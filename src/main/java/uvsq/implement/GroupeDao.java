@@ -13,18 +13,17 @@ public class GroupeDao extends Dao<Groupe> {
 	@Override
 	public boolean create(Groupe obj) {
 		String prefix = Dao.nom + ":";
-		this.connect();
-		try (PreparedStatement groupeInsert = this.connect.prepareStatement("INSERT INTO Groupe(gnom) values(?)");
+		try (PreparedStatement groupeInsert = this.connect.prepareStatement("INSERT INTO Groupe(nomGroup) values(?)");
 				PreparedStatement carreInsert = this.connect
-						.prepareStatement("INSERT INTO CarreGroupe(gnom, nom) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO CarreGroupe(nomGroup, nom) VALUES(?, ?)");
 				PreparedStatement cercleInsert = this.connect
-						.prepareStatement("INSERT INTO CercleGroupe(gnom, nom) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO CercleGroupe(nomGroup, nom) VALUES(?, ?)");
 				PreparedStatement triangleInsert = this.connect
-						.prepareStatement("INSERT INTO TriangleGroupe(gnom, nom) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO TriangleGroupe(nomGroup, nom) VALUES(?, ?)");
 				PreparedStatement groupeGroupeInsert = this.connect
-						.prepareStatement("INSERT INTO GroupeGroupe(gnom, nom) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO GroupeGroupe(nomGroup, nom) VALUES(?, ?)");
 				PreparedStatement rectangleInsert = this.connect
-						.prepareStatement("INSERT INTO RectangleGroupe(gnom, nom) VALUES(?, ?)")) {
+						.prepareStatement("INSERT INTO RectangleGroupe(nomGroup, nom) VALUES(?, ?)")) {
 			groupeInsert.setString(1, prefix + obj.getNom());
 			groupeInsert.executeUpdate();
 			List<Graphic> listElem = obj.getListeNonModifiable();
@@ -74,18 +73,17 @@ public class GroupeDao extends Dao<Groupe> {
 	public Groupe find(String id) {
 		Groupe g = null;
 		Dao dao;
-		this.connect();
-		try (PreparedStatement select = this.connect.prepareStatement("SELECT * FROM Groupe G WHERE G.gnom = ?");
+		try (PreparedStatement select = this.connect.prepareStatement("SELECT * FROM Groupe G WHERE G.nomGroup = ?");
 				PreparedStatement selectRectangle = this.connect
-						.prepareStatement("SELECT * FROM RectangleGroupe RG WHERE RG.gnom = ?");
+						.prepareStatement("SELECT * FROM RectangleGroupe RG WHERE RG.nomGroup = ?");
 				PreparedStatement selectTriangle = this.connect
-						.prepareStatement("SELECT * FROM TriangleGroupe TG WHERE TG.gnom = ?");
+						.prepareStatement("SELECT * FROM TriangleGroupe TG WHERE TG.nomGroup = ?");
 				PreparedStatement selectCercle = this.connect
-						.prepareStatement("SELECT * FROM CercleGroupe CG WHERE CG.gnom = ?");
+						.prepareStatement("SELECT * FROM CercleGroupe CG WHERE CG.nomGroup = ?");
 				PreparedStatement selectCarre = this.connect
-						.prepareStatement("SELECT * FROM CarreGroupe CG WHERE CG.gnom = ?");
+						.prepareStatement("SELECT * FROM CarreGroupe CG WHERE CG.nomGroup = ?");
 				PreparedStatement selectGroupe = this.connect
-						.prepareStatement("SELECT * FROM GroupeGroupe GG WHERE GG.gnom = ?");) {
+						.prepareStatement("SELECT * FROM GroupeGroupe GG WHERE GG.nomGroup = ?");) {
 			select.setString(1, id);
 			selectTriangle.setString(1, id);
 			selectCarre.setString(1, id);
@@ -99,7 +97,7 @@ public class GroupeDao extends Dao<Groupe> {
 					ResultSet resCercle = selectCercle.executeQuery();
 					ResultSet resGroupe = selectGroupe.executeQuery();) {
 				if (res.next()) {
-					String n = res.getString("gnom").split(":")[1];
+					String n = res.getString("nomGroup").split(":")[1];
 					g = new Groupe(n);
 				}
 
@@ -137,8 +135,7 @@ public class GroupeDao extends Dao<Groupe> {
 
 	@Override
 	public boolean delete(String id) {
-		this.connect();
-		try (PreparedStatement delete = this.connect.prepareStatement("DELETE FROM Groupe G WHERE G.gnom = ?");) {
+		try (PreparedStatement delete = this.connect.prepareStatement("DELETE FROM Groupe G WHERE G.nomGroup = ?");) {
 			delete.setString(1, id);
 			delete.executeUpdate();
 			return true;

@@ -10,9 +10,9 @@ public class Triangle extends Forme {
 	 * Forme du triangle.
 	 * 
 	 * @param nom Nom du triangle
-	 * @param a   PointA
-	 * @param b   PointB
-	 * @param c   PointC
+	 * @param pointA   PointA
+	 * @param pointB   PointB
+	 * @param pointC   PointC
 	 */
 
 	public Triangle(String nom, Point pointA, Point pointB, Point pointC) {

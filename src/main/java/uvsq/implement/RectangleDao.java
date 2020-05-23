@@ -11,7 +11,6 @@ public class RectangleDao extends Dao<Rectangle> {
 
 	@Override
 	public boolean create(Rectangle obj) {
-		this.connect();
 		try (PreparedStatement insert = this.connect
 				.prepareStatement("INSERT INTO Rectangle(nom, x, y, longueur, hauteur) values(?, ?, ?, ?, ?)");) {
 			System.out.println("Dans RectangleDao: " + Dao.nom + ":" + obj.getNom());
@@ -31,7 +30,6 @@ public class RectangleDao extends Dao<Rectangle> {
 	@Override
 	public Rectangle find(String id) {
 		Rectangle r = null;
-		this.connect();
 		try (PreparedStatement select = this.connect.prepareStatement("SELECT * FROM Rectangle R WHERE R.nom = ?")) {
 			select.setString(1, id);
 			try (ResultSet res = select.executeQuery()) {
@@ -50,7 +48,6 @@ public class RectangleDao extends Dao<Rectangle> {
 
 	@Override
 	public boolean delete(String id) {
-		this.connect();
 		try (PreparedStatement delete = this.connect.prepareStatement("DELETE FROM Rectangle R WHERE R.nom = ?");) {
 			delete.setString(1, id);
 			delete.executeUpdate();

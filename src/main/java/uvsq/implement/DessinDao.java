@@ -13,18 +13,17 @@ public class DessinDao extends Dao<Dessin> {
 	@Override
 	public boolean create(Dessin obj) {
 		obj.setNom(Dao.nom);
-		this.connect();
-		try (PreparedStatement dessinInsert = this.connect.prepareStatement("INSERT INTO Dessin(dnom) values(?)");
+		try (PreparedStatement dessinInsert = this.connect.prepareStatement("INSERT INTO Dessin(nomDessin) values(?)");
 				PreparedStatement carreInsert = this.connect
-						.prepareStatement("INSERT INTO CarreDessin(dnom, nom) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO CarreDessin(nomDessin, nom) VALUES(?, ?)");
 				PreparedStatement cercleInsert = this.connect
-						.prepareStatement("INSERT INTO CercleDessin(dnom, nom) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO CercleDessin(nomDessin, nom) VALUES(?, ?)");
 				PreparedStatement triangleInsert = this.connect
-						.prepareStatement("INSERT INTO TriangleDessin(dnom, nom) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO TriangleDessin(nomDessin, nom) VALUES(?, ?)");
 				PreparedStatement groupeDessinInsert = this.connect
-						.prepareStatement("INSERT INTO GroupeDessin(dnom, nom) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO GroupeDessin(nomDessin, nom) VALUES(?, ?)");
 				PreparedStatement rectangleInsert = this.connect
-						.prepareStatement("INSERT INTO RectangleDessin(dnom, nom) VALUES(?, ?)");) {
+						.prepareStatement("INSERT INTO RectangleDessin(nomDessin, nom) VALUES(?, ?)");) {
 			dessinInsert.setString(1, obj.getNom());
 			dessinInsert.executeUpdate();
 			List<Graphic> listElem = obj.getGraphicsList();
@@ -76,18 +75,17 @@ public class DessinDao extends Dao<Dessin> {
 	public Dessin find(String id) {
 		Dessin dessin = null;
 		Dao<?> dao;
-		this.connect();
-		try (PreparedStatement select = this.connect.prepareStatement("SELECT D.dnom FROM Dessin D WHERE D.dnom = ?");
+		try (PreparedStatement select = this.connect.prepareStatement("SELECT D.nomDessin FROM Dessin D WHERE D.nomDessin = ?");
 				PreparedStatement selectRectangle = this.connect
-						.prepareStatement("SELECT * FROM RectangleDessin RD WHERE RD.dnom = ?");
+						.prepareStatement("SELECT * FROM RectangleDessin RD WHERE RD.nomDessin = ?");
 				PreparedStatement selectTriangle = this.connect
-						.prepareStatement("SELECT * FROM TriangleDessin TD WHERE TD.dnom = ?");
+						.prepareStatement("SELECT * FROM TriangleDessin TD WHERE TD.nomDessin = ?");
 				PreparedStatement selectCercle = this.connect
-						.prepareStatement("SELECT * FROM CercleDessin CD WHERE CD.dnom = ?");
+						.prepareStatement("SELECT * FROM CercleDessin CD WHERE CD.nomDessin = ?");
 				PreparedStatement selectCarre = this.connect
-						.prepareStatement("SELECT * FROM CarreDessin CD WHERE CD.dnom = ?");
+						.prepareStatement("SELECT * FROM CarreDessin CD WHERE CD.nomDessin = ?");
 				PreparedStatement selectGroupe = this.connect
-						.prepareStatement("SELECT * FROM GroupeDessin GD WHERE GD.dnom = ?");) {
+						.prepareStatement("SELECT * FROM GroupeDessin GD WHERE GD.nomDessin = ?");) {
 			select.setString(1, id);
 			selectTriangle.setString(1, id);
 			selectCarre.setString(1, id);
@@ -137,8 +135,7 @@ public class DessinDao extends Dao<Dessin> {
 
 	@Override
 	public boolean delete(String id) {
-		this.connect();
-		try (PreparedStatement delete = this.connect.prepareStatement("DELETE FROM Dessin D WHERE D.dnom = ?");) {
+		try (PreparedStatement delete = this.connect.prepareStatement("DELETE FROM Dessin D WHERE D.nomDessin = ?");) {
 			delete.setString(1, id);
 			delete.executeUpdate();
 			return true;

@@ -4,6 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * la classe effectue la connexion de la base de données afin d'effectuer les
+ * manipulations utilisation du pattern singleton qui nous permet d'assurer la
+ * connection une seule fois
+ */
 public class DBConnection {
 
 	static final private String JDBC_DRIVER = "org.h2.Driver";
@@ -12,7 +17,7 @@ public class DBConnection {
 	// Objet Connection
 	private static Connection connection;
 
-	// Constructeur priv�
+	// Constructeur prive
 	private DBConnection() {
 		try {
 			Class.forName(JDBC_DRIVER);
@@ -24,7 +29,7 @@ public class DBConnection {
 		}
 	}
 
-	// M�thode qui va nous retourner notre instance et la cr�er si elle n'existe pas
+	// Methode qui va nous retourner notre instance et la creer si elle n'existe pas
 	public static Connection getInstance() {
 		if (connection == null) {
 			new DBConnection();
