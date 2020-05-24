@@ -12,7 +12,7 @@ Le logiciel offre les fonctionnalités suivantes:
 * L'application permettra de manipuler des cercles, des rectangles, des carrés et des triangles.
 * Chaque forme peut être affichée et déplacée.
 * Les formes peuvent être regroupées et pourront subir des traitements globaux comme par exemple déplacer ensemble un cercle et un triangle.
-* Un dessin (ensemble de formes) pourra être sauvegardé/chargé dans un SGBD embarqué dans (j'ai utilisée h2 comme SGBD)
+* Un dessin (ensemble de formes) pourra être sauvegardé/chargé dans un SGBD embarqué(j'ai utilisée h2 comme SGBD)
 
 
 
@@ -20,9 +20,9 @@ Le logiciel offre les fonctionnalités suivantes:
 
 Tous les noms utilisés pour les dessins devront utiliser des lettres et des chiffres uniquement,interdit d'utiliser des caracter speciaux .
 
-######execution de l'application :
+###### execution de l'application :
 
-Avant d’executer l’application, veuillez vous assurer que votre ordinateur contient au minimum Java et Maven. Ensuite il faut se déplacer dans le repertoire de l'application , fianalement taper les commandes suivantes:
+Avant d’executer l’application, veuillez vous assurer que votre ordinateur contient au minimum Java et Maven. Ensuite il faut se déplacer dans le repertoire de l'application , finalement taper les commandes suivantes:
 
 	mvn clean install
 
@@ -47,41 +47,43 @@ Les formes  sont le cercle, le rectangle, le carré et le triangle. Pour chacune
 
 	triangle1 = Triangle((20,10),(30,11),(12,20))
 
-######Déplacement d'un dessin
+###### Déplacement d'un dessin
 
 pour déplacer un dessin on execute la commande :
 
 	move(nomdessin,(x,y))
 	move(rectangle1,(20,10))
 
-######sauvegarde de dessin
+###### sauvegarde de dessin 
 
 	save(NomDessin)
 
-###### Suppression de dessin
+###### Suppression d'un dessin de la base de donnée
 
 	delete(dessin)
+	
 ###### Chargement de dessin 
 
 	load(dessin)
 
-######Création d'un group de dessin
+###### Création d'un group de formes ou groups 
 
 group(Nomgroup,(nomdessin1,...,..))
 
 	group(formeGroup,(retangle1,triangle1))
 
-######Supression d'un group
+###### Supression d'une forme ou d'un group 
 
-	remove(Nomgroup)
+	remove(Nomforme)
+	remove(NomGroup)
 
-######Déplacement d'un group 
+###### Déplacement d'un group 
 
 	moveGroup(formeGroup,(12,100))
+	
 ###### quitter le logiciel :
 
 	quit()
-
 
 ### Exigences 
 
